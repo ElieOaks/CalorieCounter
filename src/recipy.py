@@ -1,6 +1,9 @@
+#TODO: when recipy book class is complete, add check to see if recipy is unique. 
+import src.customErrors as err
+
 class Recipy:
     """
-    Behavior: Contains and Manipulates a singular recipy. 
+    Behavior: Contains, Manipulates, Calculates a singular recipy. 
     Public methods: Recipy(), 
     Instance variables: name, value, perGrams
     """
@@ -13,23 +16,42 @@ class Recipy:
         Side effects: Creates an instance of Recipy
         Exceptions raised: TODO
             If name is not unique
-            If name or value is None
-            If value or perGrams is < 1
+            If name or value or perGrams is None
+            If value < 0
+            If perGrams is < 1
         Example: Recipy("Milk", 45), Recipy("Cola", 250, 150)
         """
+        if name == None or name == "":
+            raise err.UnAcceptedValueError("Recipy does not have a name")
+        #TODO if name != unique ...
+        if (value == None) or (value < 0):
+            raise err.UnAcceptedValueError("Value must be at least 0 or greater")
+        if (perGrams == None) or (perGrams < 1):
+            raise err.UnAcceptedValueError("perGrams must be at least 1 or greater")
+            
         self.name = name
         self.value = value
         self.perGrams = perGrams
 
+        
+
     def setName(self, newName):
-        #TODO, check if unique or None
-        self.name = name
+        if newName == None or newName == "":
+            raise err.UnAcceptedValueError("Recipy does not have a name")
+        #TODO if name != unique ...
+        self.name = newName
         
     def setValue(self, newValue):
+        if (newValue == None) or (newValue < 0):
+            raise err.UnAcceptedValueError("Value must be at least 0 or greater")
         self.value = newValue
 
     def setPerGrams(self, newPerGrams):
-        self.perGrams = newperGrams
+        if (newPerGrams == None) or (newPerGrams < 1):
+            raise err.UnAcceptedValueError("perGrams must be at least 1 or greater")
+        self.perGrams = newPerGrams
+
+        
 
     def getName(self):
         return self.name
@@ -51,4 +73,4 @@ class Recipy:
             Side effects: 
             Exceptions raised:
             Restrictions:
-            """
+        """
