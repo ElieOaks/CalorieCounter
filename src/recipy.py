@@ -23,7 +23,6 @@ class Recipy:
         """
         if name == None or name == "":
             raise err.UnAcceptedValueError("Recipy does not have a name")
-        #TODO if name != unique ...
         if (value == None) or (value < 0):
             raise err.UnAcceptedValueError("Value must be at least 0 or greater")
         if (perGrams == None) or (perGrams < 1):
@@ -33,12 +32,9 @@ class Recipy:
         self.value = value
         self.perGrams = perGrams
 
-        
-
     def setName(self, newName):
         if newName == None or newName == "":
             raise err.UnAcceptedValueError("Recipy does not have a name")
-        #TODO if name != unique ...
         self.name = newName
         
     def setValue(self, newValue):
